@@ -7,7 +7,6 @@ interface FormData {
   confirmPassword: string;
   nickname: string;
 }
-
 interface Token {
   token: string
 }
@@ -32,7 +31,7 @@ const Register = () => {
       return;
     }
     try {
-      const res = await axios.post<Token>("/api/register", formData, {
+      const res = await axios.post<Token>("http://localhost:4000/register", formData, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

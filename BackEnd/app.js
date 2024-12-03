@@ -1,8 +1,7 @@
-import db from './db';
-
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require('cors');
 
 app.get('/', (req, res) => {
     res.json({
@@ -10,11 +9,27 @@ app.get('/', (req, res) => {
     });
 });
 
-const PORT = 3306;
+const PORT = 4000;
 const JWT_SECRET = "your_jwt_secret";
 
+//Cors허용
+app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+}));
 // 미들웨어
 app.use(bodyParser.json());
+
+const mysql = require("mysql2");
+// MySQL 연결
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "abcd1234",
+  database: "users",
+});
+
+module.exports = db;
 
 db.connect((err) => {
   if (err) {
@@ -36,6 +51,7 @@ app.post("/register", async (req, res) => {
 
   try {
     // 데이터베이스에 사용자 저장
+    console.log("someone come");
     db.query(
       "INSERT INTO users (email, password) VALUES (?, ?)",
       [email, hashedPassword],
@@ -44,15 +60,16 @@ app.post("/register", async (req, res) => {
           if (err.code === "ER_DUP_ENTRY") {
             return res.status(400).json({ message: "이미 사용 중인 이메일입니다." });
           }
+          console.log(err.code);
           //내부서버 오류
-          return res.status(500).json({ message: "회원가입에 실패했습니다." });
+          return res.status(500).json({ message: "회원가입 실패" });
         }
         // 요청이 성공적으로 처리되어서 리소스가 만들어졌음을 의미
-        res.status(201).json({ message: "회원가입 성공!" });
+        res.status(201).json({ message: "회원가입 성공" });
       }
     );
   } catch (err) {
-    res.status(500).json({ message: "서버 오류가 발생했습니다." });
+    res.status(500).json({ message: "서버 오류" });
   }
 });
 
@@ -92,7 +109,8 @@ app.post("/login", (req, res) => {
 
 // 서버 실행
 app.listen(PORT, () => {
-  console.log(`서버 실행 포트 : {Port}}`);
+  console.log(`Port: ${PORT}`)
+  console.log('listening...');
 });
 
 //refresh토큰 필요

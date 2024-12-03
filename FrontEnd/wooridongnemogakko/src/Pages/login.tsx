@@ -53,6 +53,7 @@ const Login = () => {
                 <input type="email" name="email" placeholder="이메일을 입력해주세요." value={loginForm.email} onChange={handleChange} required />
                 <input type="password" name="password" placeholder="비밀번호를 입력해주세요." value={loginForm.password} onChange={handleChange} required />
                 <button type="submit">로그인</button>
+                <div>${message}</div>
             </form>
         </div>
     );
