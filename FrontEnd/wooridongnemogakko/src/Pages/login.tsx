@@ -25,7 +25,7 @@ const Login = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const res = await axios.post<LoginResponse>("/api/login", loginForm, {
+            const res = await axios.post<LoginResponse>("http://localhost:4000/login", loginForm, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -53,7 +53,7 @@ const Login = () => {
                 <input type="email" name="email" placeholder="이메일을 입력해주세요." value={loginForm.email} onChange={handleChange} required />
                 <input type="password" name="password" placeholder="비밀번호를 입력해주세요." value={loginForm.password} onChange={handleChange} required />
                 <button type="submit">로그인</button>
-                <div>${message}</div>
+                <div>{message}</div>
             </form>
         </div>
     );

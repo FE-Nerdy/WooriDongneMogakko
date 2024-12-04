@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require('cors');
+const jwt = require("jsonwebtoken");
 
 app.get('/', (req, res) => {
     res.json({
@@ -77,7 +78,7 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/login", (req, res) => {
+app.post("/login",(req, res) => {
   const { email, password } = req.body;
   // email이나 비밀번호가 없을 시
   if (!email || !password) {
@@ -85,32 +86,46 @@ app.post("/login", (req, res) => {
   }
 
   // 사용자 조회
-  db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
-    if (err) {
-      console.log("db error");
-      return res.status(500).json({ message: "로그인에 실패했습니다." });
-    }
-
-    if (results.length === 0) {
-      return res.status(401).json({ message: "존재하지 않는 이메일입니다." });
-    }
-
-    const user = results[0];
-
-    // 비밀번호 확인
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
-    }
-
-    // JWT 토큰 발급
-    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
-      expiresIn: "1h", // 1시간 유효
+  try{
+    db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
+      if (err) {
+        console.log("db error");
+        return res.status(500).json({ message: "로그인에 실패했습니다." });
+      }
+  
+      if (results.length === 0) {
+        return res.status(401).json({ message: "존재하지 않는 이메일입니다." });
+      }
+  
+      const user = results[0];
+  
+      // 비밀번호 확인
+      if (password !== user.password) {
+        return res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
+      }
+      try{
+        const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+          expiresIn: "1h", // 1시간 유효
+        });
+    
+        res.json({ message: "로그인 성공!", token });
+      }
+      catch{
+        console.error("JWT 오류", err);
+        return res.status(500).json({message: "토크 생성 실패"});
+      }
+  
+      // JWT 토큰 발급
+      
     });
-
-    res.json({ message: "로그인 성공!", token });
-  });
+    
+  }
+  catch (err) {
+    res.status(500).json({ message: "서버 오류" });
+    console.log("register catch 오류");
+  }
 });
+
 
 // 서버 실행
 app.listen(PORT, () => {
