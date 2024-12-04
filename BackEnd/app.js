@@ -13,6 +13,8 @@ const PORT = 4000;
 const JWT_SECRET = "your_jwt_secret";
 
 //Cors허용
+
+//Postman 또는 cURL
 app.use(cors());
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -41,7 +43,7 @@ db.connect((err) => {
 
 // 회원가입 엔드포인트
 app.post("/register", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, nickname } = req.body;
 
   // 입력값 확인
   if (!email || !password) {
@@ -53,8 +55,8 @@ app.post("/register", async (req, res) => {
     // 데이터베이스에 사용자 저장
     console.log("someone come");
     db.query(
-      "INSERT INTO users (email, password) VALUES (?, ?)",
-      [email, hashedPassword],
+      "INSERT INTO users (email, password, nickname) VALUES (?, ?, ?)",
+      [email, password, nickname],
       (err, result) => {
         if (err) {
           if (err.code === "ER_DUP_ENTRY") {
@@ -63,6 +65,7 @@ app.post("/register", async (req, res) => {
           console.log(err.code);
           //내부서버 오류
           return res.status(500).json({ message: "회원가입 실패" });
+          console.log("내부서버오류");
         }
         // 요청이 성공적으로 처리되어서 리소스가 만들어졌음을 의미
         res.status(201).json({ message: "회원가입 성공" });
@@ -70,6 +73,7 @@ app.post("/register", async (req, res) => {
     );
   } catch (err) {
     res.status(500).json({ message: "서버 오류" });
+    console.log("register catch 오류");
   }
 });
 
@@ -83,6 +87,7 @@ app.post("/login", (req, res) => {
   // 사용자 조회
   db.query("SELECT * FROM users WHERE email = ?", [email], async (err, results) => {
     if (err) {
+      console.log("db error");
       return res.status(500).json({ message: "로그인에 실패했습니다." });
     }
 
