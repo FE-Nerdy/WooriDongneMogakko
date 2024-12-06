@@ -1,15 +1,23 @@
 import { useState } from "react";
 import axios from "axios";
 
+interface FormData {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  nickname: string;
+}
+interface Token {
+  token: string
+}
+
 const Register = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
     confirmPassword: "",
     nickname: "",
   });
-  
-  const [message, setMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,7 +31,7 @@ const Register = () => {
       return;
     }
     try {
-      const res = await axios.post("/api/register", formData, {
+      const res = await axios.post<Token>("http://localhost:4000/register", formData, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +39,7 @@ const Register = () => {
       });
       const data = res.data;
         localStorage.setItem('token', data.token);
-        setMessage('회원가입 성공');
+        console.log('회원가입 성공');
       }
     catch (error) {
       console.error(error);
@@ -41,7 +49,7 @@ const Register = () => {
         console.log(error.response);
       }
       else {
-        setMessage('error');
+        console.log('error');
       }
     }
   }
@@ -56,7 +64,6 @@ const Register = () => {
         <input type="text" name="nickname" placeholder="닉네임을 입력해주세요" value={formData.nickname} onChange={handleChange} required />
         <button type="submit">회원가입</button>
       </form>
-      <p>{message}</p>
     </div>
   );
 }
