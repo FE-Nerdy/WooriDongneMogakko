@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    position: sticky;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: green;
+    color: white;
+}
+
+.leftMenu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+.rightMenu {
+    display: flex;
+    margin-left: auto;
+    gap: 1rem;
+    color: white;
+    text-decoration: none;
+    align-items: center;
+}
+
+.title {
+    text-decoration: none;
+}
+
+.mogakko:hover, .logo:hover, .navLinks li a:hover {
+  color: yellowgreen;
+  transition: color 0.3s ease
+}
