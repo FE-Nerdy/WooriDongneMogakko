@@ -20,19 +20,15 @@
     text-decoration: none;
 }
 
-.navLinks {
+.rightMenu {
+    flex-direction: row;
     display: flex;
     list-style: none;
-    gap: 1rem;
-}
-
-.rightMenu {
-    display: flex;
     margin-left: auto;
     gap: 1rem;
     color: white;
-    text-decoration: none;
     align-items: center;
+    text-decoration: none;
 }
 
 .title {

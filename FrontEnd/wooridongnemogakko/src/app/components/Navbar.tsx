@@ -9,31 +9,29 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <nav className={styles.navbar}>
-        <div className={styles.leftMenu}>
-          <Link href="/" className={styles.logo}>
-            Logo
-          </Link>
-          <Link href="/" className={styles.title}>Mogakko</Link>
-        </div>
-        
-        <div className={styles.rightMenu}>
-          <ul className={styles.navLinks}>
-            {isLoggedIn ? (
-              <li>
-                <Link href="/profile">img, nickname</Link>
-              </li>
-            ) : (
-              <div>
-                <li>
-                  <Link href="/login">Login</Link>
-                </li>
-                <li>
-                  <Link href="/register">Register</Link>
-                </li>
-              </div>
-            )}
-          </ul>
-        </div>
+      <div className={styles.leftMenu}>
+        <Link href="/" className={styles.logo}>
+          Logo
+        </Link>
+        <Link href="/" className={styles.title}>Mogakko</Link>
+      </div>
+
+      <ul className={styles.rightMenu}>
+        {isLoggedIn ? (
+          <li>
+            <Link href="/profile">img, nickname</Link>
+          </li>
+        ) : (
+          <>
+            <li>
+              <Link href="/login">Login</Link>
+            </li>
+            <li>
+              <Link href="/register">Register</Link>
+            </li>
+          </>
+        )}
+      </ul>
     </nav>
   );
 };
