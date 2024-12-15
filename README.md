@@ -8,5 +8,6 @@
 2. 기술 스택 학습 => 프론트와 백엔드 역량 향상
 3. 배포 및 운영으로 피드백을 받으며 진행
 
-##[작업일지](https://www.notion.so/1443838607ed80c298c9c9ed04b6cc7c)
-##[기능 명세서](https://www.notion.so/1543838607ed80a1b27bd3ae65f64181)
+[작업일지](https://www.notion.so/1443838607ed80c298c9c9ed04b6cc7c)
+
+[기능 명세서](https://www.notion.so/1543838607ed80a1b27bd3ae65f64181)
