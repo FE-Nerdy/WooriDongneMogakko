@@ -9,4 +9,5 @@
 3. 배포 및 운영으로 피드백을 받으며 진행
 
 [작업일지](https://sixth-mandolin-d11.notion.site/1443838607ed80c298c9c9ed04b6cc7c)
-[기능 명세서]([https://www.notion.so/1543838607ed80a1b27bd3ae65f64181](https://sixth-mandolin-d11.notion.site/1543838607ed80a1b27bd3ae65f64181))
+
+[기능 명세서](https://sixth-mandolin-d11.notion.site/1543838607ed80a1b27bd3ae65f64181)
