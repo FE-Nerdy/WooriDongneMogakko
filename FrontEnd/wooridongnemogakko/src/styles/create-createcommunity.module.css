@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.slide {
+    width: 30%;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid #ccc;
+}
+
+.map {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.mapContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
