@@ -1,12 +1,12 @@
 .navbar {
-    display: flex;
-    position: sticky;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    width: 100%;
-    background-color: green;
-    color: white;
+  display: flex;
+  position: sticky;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: green;
+  color: white;
 }
 
 .leftMenu {
@@ -16,26 +16,28 @@
 }
 
 .logo {
-    font-size: 1.5rem;
-    text-decoration: none;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
 .rightMenu {
-    flex-direction: row;
-    display: flex;
-    list-style: none;
-    margin-left: auto;
-    gap: 1rem;
-    color: white;
-    align-items: center;
-    text-decoration: none;
+  flex-direction: row;
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+  gap: 1rem;
+  color: white;
+  align-items: center;
+  text-decoration: none;
 }
 
 .title {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.mogakko:hover, .logo:hover, .navLinks li a:hover {
+.mogakko:hover,
+.logo:hover,
+.navLinks li a:hover {
   color: yellowgreen;
   transition: color 0.3s ease
 }
