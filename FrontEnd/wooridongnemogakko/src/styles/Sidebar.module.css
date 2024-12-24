@@ -1,23 +1,27 @@
+.container {
+  display: flex;
+}
+
 .sidebar {
     width: 300px;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #fff;
+    background-color: white;
     display: flex;
     flex-direction: column;
   }
   
   .searchBox {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid white;
   }
   
   .searchInput {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid white;
     border-radius: 4px;
     font-size: 1rem;
   }
@@ -31,8 +35,8 @@
   .listItem {
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: #b89090;
+    border: 1px solid #815151;
     border-radius: 4px;
     transition: background-color 0.3s ease;
     cursor: pointer;
@@ -49,5 +53,18 @@
   .listItem p {
     margin: 0;
     font-size: 0.9rem;
-    color: #555;
+    color: black;
+  }
+
+  .searchedDataList {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .searchedDataListItem {
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    background-color: yellow;
+    border-radius: 4px;
   }

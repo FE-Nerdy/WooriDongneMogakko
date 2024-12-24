@@ -1,14 +1,14 @@
 "use client";
 import styles from "../../styles/create-createcommunity.module.css";
 
-import CreateCommunitySlide from "../components/CreateCommunitySidebar";
+import CreateCommunitySidebar from "../components/CreateCommunitySidebar";
 import Map from "../components/Map";
 
 const CreateCommunity = () => {
     return (
         <div className={styles.container}>
             <div className={styles.slide}>
-                <CreateCommunitySlide />
+                <CreateCommunitySidebar />
             </div>
             <div className={styles.map}>
                 <div className={styles.mapContainer}>
