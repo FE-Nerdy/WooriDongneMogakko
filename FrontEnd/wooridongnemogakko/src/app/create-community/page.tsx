@@ -1,7 +1,7 @@
 "use client";
 import styles from "../../styles/create-createcommunity.module.css";
 
-import CreateCommunitySlide from "../components/CreateCommunitySlide";
+import CreateCommunitySlide from "../components/CreateCommunitySidebar";
 import Map from "../components/Map";
 
 const CreateCommunity = () => {

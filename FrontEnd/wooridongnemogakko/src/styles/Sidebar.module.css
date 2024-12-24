@@ -1,0 +1,53 @@
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .searchBox {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .listItem {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .listItem:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .listItem h3 {
+    margin: 0 0 5px 0;
+  }
+  
+  .listItem p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+  }
